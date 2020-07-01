@@ -6,14 +6,17 @@ var request = require("supertest"),
 
 const { schemaPlanet } = require("../schemas/planet_schema");
 const { schemaPeople } = require("../schemas/people_schema");
+const { schemaFilms } = require("../schemas/films_schema");
 
-const { PATH_PLANET, PATH_PEOPLE } = require('../url/baseUrl')
+const { 
+    PATH_PLANET, PATH_PEOPLE, PATH_FILMS
+} = require('../url/baseUrl')
 const request_timeout = 10000;
 const URL = process.env.NODE_ENV;
 
 describe("Testes de contrato Star Wars", function () {
 
-    it("Validar contrato de um planeta", function (done) {
+    it("Validar contrato de um planeta específico", function (done) {
         this.timeout(request_timeout);
         request(URL)
             .get(PATH_PLANET)
@@ -25,7 +28,7 @@ describe("Testes de contrato Star Wars", function () {
             });
     });
 
-    it("Validar contrato de um personagem", function (done) {
+    it("Validar contrato de um personagem específico", function (done) {
         this.timeout(request_timeout);
         request(URL)
             .get(PATH_PEOPLE)
@@ -33,6 +36,18 @@ describe("Testes de contrato Star Wars", function () {
             .expect(200)
             .end(function (err, res) {
                 joiAssert(res.body, schemaPeople);
+                done(err);
+            });
+    });
+
+    it("Validar contrato de um filme específico", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get(PATH_FILMS)
+            .expect("Content-Type", /json/)
+            .expect(200)
+            .end(function (err, res) {
+                joiAssert(res.body, schemaFilms);
                 done(err);
             });
     });
