@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/deyvirsonbm/qa_picpay.svg?branch=develop)](https://travis-ci.com/deyvirsonbm/qa_picpay)
 # qa_picpay
 
 ## Dependência
