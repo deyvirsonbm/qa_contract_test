@@ -1,24 +1,25 @@
-# Contract Testing
+## Dependência
+* Node
 
-## como rodar os testes de contrato
+## Como rodar os testes de contrato
 
-1. Iniciando o Mock: Vá ate a pasta 'wiremock_for_app' e execute o comando:
-```
-java -jar wire.jar
-```
+1. clonar o projeto:
 
-
-2. No arquivo 'package.json' atualize a URL do mock no scripts/tests_contract:
+via http
 ```
-"tests_contract": "NODE_ENV=http://{*URL_AQUI*} mocha tests/journey_test.js --reporter mochawesome"
+https://github.com/deyvirsonbm/qa_picpay.git
 ```
-
-3. Atualizando o projeto, execute o comando:
+via ssh
 ```
-npm install --safe
+git@github.com:deyvirsonbm/qa_picpay.git
 ```
 
-2. Rodando os testes de contrato execute o comando:
+2. Instalar as dependencias, na raiz do projeto rodar o seguinte comando
 ```
-npm run tests_contract
+npm install
+```
+
+3. Executando os testes
+```
+npm test
 ```
