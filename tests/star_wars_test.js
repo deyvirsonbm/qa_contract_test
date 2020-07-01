@@ -1,7 +1,6 @@
 "use strict";
 
 var request = require("supertest"),
-    expect = require("chai").expect,
     joiAssert = require("joi-assert");
 
 const { schemaPlanet } = require("../schemas/planet_schema");
@@ -33,6 +32,16 @@ describe("Testes de contrato Star Wars", function () {
             });
     });
 
+    it("Validar planeta inexistente ", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get("planets/500/")
+            .expect(404)
+            .end(function (err) {
+                done(err);
+            });
+    });
+
     it("Validar contrato de um personagem específico", function (done) {
         this.timeout(request_timeout);
         request(URL)
@@ -41,6 +50,16 @@ describe("Testes de contrato Star Wars", function () {
             .expect(200)
             .end(function (err, res) {
                 joiAssert(res.body, schemaPeople);
+                done(err);
+            });
+    });
+
+    it("Validar personagem inexistente", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get("people/890/")
+            .expect(404)
+            .end(function (err) {
                 done(err);
             });
     });
@@ -57,6 +76,17 @@ describe("Testes de contrato Star Wars", function () {
             });
     });
 
+
+    it("Validar filme inexistente", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get('films/50/')
+            .expect(404)
+            .end(function (err) {
+                done(err);
+            });
+    });
+
     it("Validar contrato de uma nave específica", function (done) {
         this.timeout(request_timeout);
         request(URL)
@@ -65,6 +95,16 @@ describe("Testes de contrato Star Wars", function () {
             .expect(200)
             .end(function (err, res) {
                 joiAssert(res.body, schemaStarships);
+                done(err);
+            });
+    });
+
+    it("Validar nave inexistente", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get("starships/50/")
+            .expect(404)
+            .end(function (err) {
                 done(err);
             });
     });
@@ -81,6 +121,17 @@ describe("Testes de contrato Star Wars", function () {
             });
     });
 
+
+    it("Validar veiculo inexistente", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get("vehicles/100/")
+            .expect(404)
+            .end(function (err) {
+                done(err);
+            });
+    });
+
     it("Validar contrato de uma espécie específica", function (done) {
         this.timeout(request_timeout);
         request(URL)
@@ -89,6 +140,16 @@ describe("Testes de contrato Star Wars", function () {
             .expect(200)
             .end(function (err, res) {
                 joiAssert(res.body, schemaSpecies);
+                done(err);
+            });
+    });
+
+    it("Validar espécie inexistente", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get("species/40/")
+            .expect(404)
+            .end(function (err) {
                 done(err);
             });
     });
