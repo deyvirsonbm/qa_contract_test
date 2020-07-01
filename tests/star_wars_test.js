@@ -8,9 +8,12 @@ const { schemaPlanet } = require("../schemas/planet_schema");
 const { schemaPeople } = require("../schemas/people_schema");
 const { schemaFilms } = require("../schemas/films_schema");
 const { schemaStarships } = require("../schemas/starships_schema");
+const { schemaVehicles } = require("../schemas/vehicles_schema");
+const { schemaSpecies } = require("../schemas/species_schema");
 
 const {
-    PATH_PLANET, PATH_PEOPLE, PATH_FILMS, PATH_STARSHIPS
+    PATH_PLANET, PATH_PEOPLE, PATH_FILMS, PATH_STARSHIPS,
+    PATH_VEHICLES, PATH_SPECIES
 } = require('../url/baseUrl')
 
 const request_timeout = 10000;
@@ -62,6 +65,30 @@ describe("Testes de contrato Star Wars", function () {
             .expect(200)
             .end(function (err, res) {
                 joiAssert(res.body, schemaStarships);
+                done(err);
+            });
+    });
+
+    it("Validar contrato de uma veiculo específico", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get(PATH_VEHICLES)
+            .expect("Content-Type", /json/)
+            .expect(200)
+            .end(function (err, res) {
+                joiAssert(res.body, schemaVehicles);
+                done(err);
+            });
+    });
+
+    it("Validar contrato de uma espécie específica", function (done) {
+        this.timeout(request_timeout);
+        request(URL)
+            .get(PATH_SPECIES)
+            .expect("Content-Type", /json/)
+            .expect(200)
+            .end(function (err, res) {
+                joiAssert(res.body, schemaSpecies);
                 done(err);
             });
     });
