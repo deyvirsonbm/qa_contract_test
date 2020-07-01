@@ -24,4 +24,4 @@ npm install
 3. Executando os testes
 ```
 npm test
-```%
+```
