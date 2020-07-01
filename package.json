@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Teste de Contratos Star Wars API",
   "scripts": {
-    "test": "NODE_TLS_REJECT_UNAUTHORIZED='0' NODE_ENV=https://swapi.dev/api/ mocha tests/star_wars_test.js"
+    "test": "NODE_ENV=https://swapi.dev/api/ mocha tests/star_wars_test.js"
   },
   "author": "Jose Deyvirson Bezerra de Mendonca",
   "license": "ISC",
