@@ -9,13 +9,11 @@
   "license": "ISC",
   "dependencies": {
     "joi-assert": "^0.0.3",
-    "mocha": "^7.1.0",
-    "mochawesome": "^3.1.1",
-    "supertest": "^4.0.2",
     "mocha": "^8.0.1",
     "mochawesome": "^6.1.1",
+    "supertest": "^4.0.2",
     "chai": "^4.2.0",
-    "joi": "^14.3.1",
+    "joi": "^17.2.0",
     "jsonschema": "1.2.6"
   }
 }
