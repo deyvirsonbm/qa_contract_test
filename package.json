@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "joi-assert": "^0.0.3",
-    "mocha": "^8.0.1",
+    "mocha": "8.1.3",
     "mochawesome": "^6.1.1",
     "supertest": "^4.0.2",
     "chai": "^4.2.0",
